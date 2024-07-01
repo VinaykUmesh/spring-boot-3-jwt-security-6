@@ -4,17 +4,15 @@ This project demonstrates the implementation of security using Spring Boot 3.0 a
 ## Features
 * User registration and login with JWT authentication
 * Password encryption using BCrypt
-* Role-based authorization with Spring Security
-* Customized access denied handling
-* Logout mechanism
-* Refresh token
 
 ## Technologies
 * Spring Boot 3.0
-* Spring Security
+* Spring Security 6
 * JSON Web Tokens (JWT)
 * BCrypt
 * Maven
+* Spring data JPA
+* Lombok
  
 ## Getting Started
 To get started with this project, you will need to have the following installed on your local machine:
@@ -32,4 +30,4 @@ To build and run the project, follow these steps:
 * Build the project: mvn clean install
 * Run the project: mvn spring-boot:run 
 
--> The application will be available at http://localhost:8080.
+-> The application will be available at http://localhost:8090.
