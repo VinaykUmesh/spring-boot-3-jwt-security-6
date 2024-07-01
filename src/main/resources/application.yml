@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: spring-boot-3-jwt-security-6
+  datasource:
+    url: jdbc:mysql://localhost:3306/jwt_auth_db?createDatabaseIfNotExist=true
+    username: root
+    password: p@ss123!
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
