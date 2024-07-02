@@ -2,16 +2,14 @@ spring:
   application:
     name: spring-boot-3-jwt-security-6
   datasource:
-    url: jdbc:postgresql://localhost:5432/jwt_security
+    url: jdbc:mysql://localhost:3306/jwt_auth_db?createDatabaseIfNotExist=true
     username: root
-    password: P@ss123!
-    driver-class-name: org.postgresql.Driver
+    password: p@ss123!
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: create-drop
-    show-sql: false
+    show-sql: true
     properties:
       hibernate:
         format_sql: true
-    database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
