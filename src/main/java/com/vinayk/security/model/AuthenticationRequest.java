@@ -1,19 +1,10 @@
 package com.vinayk.security.model;
 
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
 public class AuthenticationRequest {
-
-    @JsonProperty("access_token")
-    private String accessToken;
+    private String username, password, email;
 }

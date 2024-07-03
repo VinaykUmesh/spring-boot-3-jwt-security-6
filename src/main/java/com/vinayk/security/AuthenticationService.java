@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.vinayk.security.Repository.UserRepository;
 import com.vinayk.security.authentication.JwtService;
+import com.vinayk.security.model.AuthenticationResponse;
 import com.vinayk.security.model.AuthenticationRequest;
-import com.vinayk.security.model.RequestAuth;
 import com.vinayk.security.model.Role;
 import com.vinayk.security.model.User;
 
@@ -23,24 +23,24 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationRequest register(RequestAuth requestAuth) {
+    public AuthenticationResponse register(AuthenticationRequest authenticationRequest) {
 
-        User user = User.builder().username(requestAuth.getUsername())
-                .password(passwordEncoder.encode(requestAuth.getPassword()))
-                .email(requestAuth.getEmail()).role(Role.USER).build();
+        User user = User.builder().username(authenticationRequest.getUsername())
+                .password(passwordEncoder.encode(authenticationRequest.getPassword()))
+                .email(authenticationRequest.getEmail()).role(Role.USER).build();
         userRepository.save(user);
         final String token = jwtService.generateToken(user);
-        return AuthenticationRequest.builder().accessToken(token).build();
+        return AuthenticationResponse.builder().accessToken(token).build();
     }
 
-    public AuthenticationRequest authenticate(RequestAuth requestAuth) {
+    public AuthenticationResponse authenticate(AuthenticationRequest authenticationRequest) {
         authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(requestAuth.getUsername(),
-                        requestAuth.getPassword()));
-        User user = User.builder().username(requestAuth.getUsername())
-                .password(passwordEncoder.encode(requestAuth.getPassword()))
-                .email(requestAuth.getEmail()).build();
+                new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(),
+                        authenticationRequest.getPassword()));
+        User user = User.builder().username(authenticationRequest.getUsername())
+                .password(passwordEncoder.encode(authenticationRequest.getPassword()))
+                .email(authenticationRequest.getEmail()).build();
         final String token = jwtService.generateToken(user);
-        return AuthenticationRequest.builder().accessToken(token).build();
+        return AuthenticationResponse.builder().accessToken(token).build();
     }
 }
